@@ -10,6 +10,19 @@ function UI() {}
 // add book to list
 UI.prototype.addBookToList = function(book) {
     // console.log(book);
+    const list = document.getElementById("book-list");
+    // create tr(table row) element
+    const row = document.createElement("tr");
+    // console.log(row);
+    // insert cols
+    row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.isbn}</td>
+        <td><a href="#" class="delete">X<a></td>
+    `;
+
+    list.appendChild(row);
 }
 
 // event listeners
