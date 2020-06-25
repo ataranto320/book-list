@@ -57,7 +57,14 @@ class UI {
 // local storage class
 class Store {
     static getBooks() {
+        let books;
+        if (localStorage.getItem("books") === null) {
+            books = [];
+        } else {
+            books = JSON.parse(localStorage.getItem("books"));
+        }
 
+        return books;
     }
 
     static displayBooks() {
@@ -91,6 +98,8 @@ class Store {
     } else {
     // add book to list
     ui.addBookToList(book);
+    // add to local storage
+    Store.addBook(book);
     //show success
     ui.showAlert("Book Added", "success");
     // clear fields
